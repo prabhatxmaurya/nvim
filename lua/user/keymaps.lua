@@ -45,3 +45,7 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', default_opts)  -- Live gr
 map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', default_opts)    -- List buffers
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', default_opts)  -- Help tags
 
+
+-- Keymap for organizing imports
+map('n', '<leader>oi', '<cmd>lua vim.lsp.buf.execute_command({ command = "java.organizeImports" })<CR>', default_opts)
+
