@@ -27,5 +27,7 @@ opt.smartcase = true
 opt.termguicolors = true
 opt.background = 'dark'
 
+opt.scrolloff = 5 -- Set scrolloff to keep the line you're editing centered
+
 -- Add more options as needed
 

@@ -3,6 +3,7 @@ require ('user.keymaps')
 require ('user.telescope')
 require('user.cmp')
 require ('user.java')
+require ('user.autopairs')
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -27,4 +28,10 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lua'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
+
+    use 'windwp/nvim-autopairs'
+
+     -- Load test plugin configuration
+    require('user.test')(use)
+
 end)

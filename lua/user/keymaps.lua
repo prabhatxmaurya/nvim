@@ -56,3 +56,11 @@ map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
 -- Go back to previous location
 map('n', 'cb', '<C-o>', default_opts)  -- Map <leader>cb to go back
 
+--test keybindings
+map('n', 'tn', ':TestNearest<CR>', default_opts)
+map('n', 'tf', ':TestFile<CR>', default_opts)
+map('n', 'ts', ':TestSuite<CR>', default_opts)
+map('n', 'tl', ':TestLast<CR>', default_opts)
+map('n', 'tv', ':TestVisit<CR>', default_opts)
+
+
