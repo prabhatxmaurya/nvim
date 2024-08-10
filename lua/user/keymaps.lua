@@ -49,3 +49,10 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', default_opts)  -- Help ta
 -- Keymap for organizing imports
 map('n', '<leader>oi', '<cmd>lua vim.lsp.buf.execute_command({ command = "java.organizeImports" })<CR>', default_opts)
 
+
+-- Go to definition
+map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
+
+-- Go back to previous location
+map('n', 'cb', '<C-o>', default_opts)  -- Map <leader>cb to go back
+
