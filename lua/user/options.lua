@@ -29,5 +29,8 @@ opt.background = 'dark'
 
 opt.scrolloff = 5 -- Set scrolloff to keep the line you're editing centered
 
+-- Set scrolloff to keep the line you're editing centered
+opt.scrolloff = 999  -- Adjust the value as needed
+
 -- Add more options as needed
 

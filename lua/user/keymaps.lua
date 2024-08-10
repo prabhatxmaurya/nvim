@@ -63,4 +63,4 @@ map('n', 'ts', ':TestSuite<CR>', default_opts)
 map('n', 'tl', ':TestLast<CR>', default_opts)
 map('n', 'tv', ':TestVisit<CR>', default_opts)
 
-
+map('n', 'ca', ':lua vim.lsp.buf.code_action()<CR>', default_opts)

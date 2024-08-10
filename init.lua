@@ -4,6 +4,7 @@ require ('user.telescope')
 require('user.cmp')
 require ('user.java')
 require ('user.autopairs')
+require ('user.formatter')
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -16,7 +17,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-
+    use 'nvim-treesitter/nvim-treesitter'
   use 'neovim/nvim-lspconfig' -- LSP Configuration
   -- Add other plugins here
 
@@ -33,5 +34,7 @@ return require('packer').startup(function(use)
 
      -- Load test plugin configuration
     require('user.test')(use)
+
+    use 'mhartington/formatter.nvim' -- autoformat
 
 end)
