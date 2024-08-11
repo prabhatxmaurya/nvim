@@ -6,7 +6,6 @@ require('user.cmp')
 require('user.java')
 require('user.autopairs')
 require('user.colorscheme')
-require('user.markdown')
 
 -- Initialize packer.nvim
 vim.cmd [[packadd packer.nvim]]
@@ -14,6 +13,9 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Let packer manage itself
     use 'wbthomason/packer.nvim'
+
+    -- Load test plugin configuration
+    require('user.test')(use)
 
     -- Color scheme
     use { 'catppuccin/nvim', as = 'catppuccin' }
@@ -50,21 +52,6 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make'
     }
-
-    -- Markdown plugins
-    use {
-        'iamcco/markdown-preview.nvim',
-        run = 'cd app && npm install',
-        ft = { 'markdown' }
-    }
-    use { 'plasticboy/vim-markdown', ft = { 'markdown' } }
-    use {
-        'preservim/vim-pencil',
-        ft = { 'markdown' },
-        config = function()
-            vim.cmd('Pencil')
-        end
-    }
-    use { 'godlygeek/tabular', ft = { 'markdown' } }
-end)
+end
+)
 
