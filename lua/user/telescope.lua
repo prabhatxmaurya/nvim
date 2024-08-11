@@ -9,13 +9,17 @@ telescope.setup{
     selection_caret = "> ",
     entry_prefix = "  ",
     initial_mode = "insert",
-    layout_strategy = "horizontal",
+    layout_strategy = "horizontal", -- Set layout strategy to vertical
     layout_config = {
-      horizontal = {
-        mirror = false,
-      },
       vertical = {
         mirror = false,
+        preview_height = 0.6,  -- Adjust this value for preview height
+        prompt_position = "top",
+        width = 0.75,          -- Adjust the width of the preview window
+      },
+      horizontal = {
+        mirror = false,
+        preview_width = 0.6,  -- Adjust this value for preview width
       },
     },
     sorting_strategy = "ascending",
@@ -31,7 +35,7 @@ telescope.setup{
     },
     color_devicons = true,
     use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil
+    set_env = { ['COLORTERM'] = 'truecolor' },
     mappings = {
       i = {
         ["<C-u>"] = false,
@@ -49,4 +53,7 @@ telescope.setup{
     },
   }
 }
+
+-- Load fzf extension
+require('telescope').load_extension('fzf')
 

@@ -1,20 +1,23 @@
-require ('user.options')
-require ('user.keymaps')
-require ('user.telescope')
+-- Load user configuration files
+require('user.options')
+require('user.keymaps')
+require('user.telescope')
 require('user.cmp')
-require ('user.java')
-require ('user.autopairs')
-require ('user.colorscheme')
-require ('user.markdown')
+require('user.java')
+require('user.autopairs')
+require('user.colorscheme')
+require('user.markdown')
 
+-- Initialize packer.nvim
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-     -- Load test plugin configuration
-    require('user.test')(use)
+    -- Let packer manage itself
+    use 'wbthomason/packer.nvim'
 
-    use 'wbthomason/packer.nvim' -- Let packer manage itself
-    use { 'catppuccin/nvim', as = 'catppuccin' } -- Catppuccin color scheme
+    -- Color scheme
+    use { 'catppuccin/nvim', as = 'catppuccin' }
+
     -- Completion framework
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
@@ -23,37 +26,45 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lua'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
-    use 'preservim/nerdtree'      -- NERDTree plugin
+
+    -- NERDTree plugin
+    use 'preservim/nerdtree'
+
+    -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
-    use 'neovim/nvim-lspconfig' -- LSP Configuration
+
+    -- LSP Configuration
+    use 'neovim/nvim-lspconfig'
+
+    -- Auto pairs
     use 'windwp/nvim-autopairs'
 
-	  -- Add Telescope
+    -- Telescope
     use {
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-     -- Markdown preview plugin
+    -- Telescope FZF native
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    }
+
+    -- Markdown plugins
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && npm install',
         ft = { 'markdown' }
     }
-
-    -- Syntax highlighting for Markdown
     use { 'plasticboy/vim-markdown', ft = { 'markdown' } }
-
-    -- Improved Markdown editing
     use {
         'preservim/vim-pencil',
         ft = { 'markdown' },
         config = function()
-          vim.cmd('Pencil')
+            vim.cmd('Pencil')
         end
     }
-
-  -- Additional text objects for Markdown
-  use { 'godlygeek/tabular', ft = { 'markdown' } }
-
+    use { 'godlygeek/tabular', ft = { 'markdown' } }
 end)
+
