@@ -1,6 +1,6 @@
 -- init.lua or a separate file like lua/user/colorscheme.lua
 require('catppuccin').setup {
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    flavour = "macchiato", -- latte, frappe, macchiato, mocha
     background = { 
         light = "latte",
         dark = "mocha",
