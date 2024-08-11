@@ -1,6 +1,7 @@
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 
+
 -- Leader key
 vim.g.mapleader = ' '  -- Set Space as leader key
 
