@@ -5,19 +5,22 @@ require('user.cmp')
 require ('user.java')
 require ('user.autopairs')
 require ('user.formatter')
+require ('user.colorscheme')
 
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Let packer manage itself
-  use 'preservim/nerdtree' -- Add NERDTree plugin
+  -- use 'morhetz/gruvbox'  -- Example: Gruvbox color schemese 
+  use { 'catppuccin/nvim', as = 'catppuccin' } -- Catppuccin color scheme
 
 	  -- Add Telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-    use 'nvim-treesitter/nvim-treesitter'
+   use 'preservim/nerdtree'      -- NERDTree plugin
+use 'nvim-treesitter/nvim-treesitter'
   use 'neovim/nvim-lspconfig' -- LSP Configuration
   -- Add other plugins here
 
