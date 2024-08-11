@@ -64,3 +64,27 @@ map('n', 'tl', ':TestLast<CR>', default_opts)
 map('n', 'tv', ':TestVisit<CR>', default_opts)
 
 map('n', 'ca', ':lua vim.lsp.buf.code_action()<CR>', default_opts)
+
+-- Toggle terminal
+map('n', '<leader>t', ':lua ToggleTerm()<CR>', default_opts)
+
+function ToggleTerm()
+    -- Check if there's a terminal buffer already open
+    local term_buf = vim.fn.bufnr('term://*')
+
+    if term_buf == -1 then
+        -- If not, open a new terminal
+        vim.cmd('belowright split | terminal')
+    else
+        -- If yes, check if it's visible in any window
+        local term_win = vim.fn.bufwinnr(term_buf)
+        
+        if term_win == -1 then
+            -- If not, open it below in a split
+            vim.cmd('belowright split | buffer ' .. term_buf)
+        else
+            -- If yes, close the terminal window
+            vim.cmd(term_win .. 'close')
+        end
+    end
+end
