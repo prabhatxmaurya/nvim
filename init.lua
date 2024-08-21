@@ -1,11 +1,11 @@
 -- Load user configuration files
 require('user.options')
 require('user.keymaps')
-require('user.telescope')
 require('user.cmp')
 require('user.java')
 require('user.autopairs')
-require('user.colorscheme')
+require('user.telescope')
+require('user.gruvbox')
 
 -- Initialize packer.nvim
 vim.cmd [[packadd packer.nvim]]
@@ -13,12 +13,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Let packer manage itself
     use 'wbthomason/packer.nvim'
-
-    -- Load test plugin configuration
-    require('user.test')(use)
-
-    -- Color scheme
-    use { 'catppuccin/nvim', as = 'catppuccin' }
 
     -- Completion framework
     use 'hrsh7th/nvim-cmp'
@@ -29,29 +23,39 @@ return require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
 
+    -- Load test plugin configuration
+    require('user.test')(use)
+
     -- NERDTree plugin
     use 'preservim/nerdtree'
 
     -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
 
-    -- LSP Configuration
-    use 'neovim/nvim-lspconfig'
-
     -- Auto pairs
     use 'windwp/nvim-autopairs'
 
-    -- Telescope
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+    -- LSP Configuration
+    use 'neovim/nvim-lspconfig'
+
+
+        use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    -- Telescope FZF native
+        -- Telescope FZF native
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make'
     }
+
+    use { "ellisonleao/gruvbox.nvim" }
+    
+
 end
 )
+
+
 
