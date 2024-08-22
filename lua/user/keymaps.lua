@@ -17,8 +17,19 @@ map('n', '<leader>c', ':bd<CR>', default_opts)
 -- Toggle NERDTree
 map('n', '<leader>n', ':NERDTreeToggle<CR>', default_opts)
 
+--split
+map('n', '<leader>v', ':vs<CR>', default_opts)
+map('n', '<leader>h', ':sp<CR>', default_opts)
+
+-- move to end of line
+map('n', 'e', '$', default_opts)
+
+-- move to the starting of lin
+map('n', 's', '_', default_opts)
+
+
 -- Move between windows
-map('n', '<C-h>', '<C-w>h', default_opts)
+map('n', '<C-h>', '<C-w>h', default_opts) 
 map('n', '<C-j>', '<C-w>j', default_opts)
 map('n', '<C-k>', '<C-w>k', default_opts)
 map('n', '<C-l>', '<C-w>l', default_opts)
