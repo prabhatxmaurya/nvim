@@ -6,9 +6,21 @@ require('user.java')
 require('user.autopairs')
 require('user.telescope')
 require('user.gruvbox')
+require('user.lsp')
+require('user.java')
+require('user.treesitter')
+
+
 
 -- Initialize packer.nvim
 vim.cmd [[packadd packer.nvim]]
+
+-- Configuration for markdown-preview.nvim
+vim.cmd([[
+  let g:mkdp_auto_start = 1
+  let g:mkdp_auto_close = 1
+]])
+
 
 return require('packer').startup(function(use)
     -- Let packer manage itself
@@ -38,6 +50,11 @@ return require('packer').startup(function(use)
     -- LSP Configuration
     use 'neovim/nvim-lspconfig'
 
+    -- Java Language Server support
+     use 'mfussenegger/nvim-jdtls' 
+
+     -- Markdown Preview (optional)
+      use { 'iamcco/markdown-preview.nvim', run = 'cd app && npm install' }
 
         use {
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
@@ -52,7 +69,13 @@ return require('packer').startup(function(use)
     }
 
     use { "ellisonleao/gruvbox.nvim" }
-    
+
+      use {
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup()
+    end
+  }
 
 end
 )

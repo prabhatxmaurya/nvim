@@ -89,3 +89,28 @@ function ToggleTerm()
         end
     end
 end
+
+-- Key bindings for Markdown preview
+vim.api.nvim_set_keymap('n', '<leader>mp', ':MarkdownPreview<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ms', ':MarkdownPreviewStop<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>mf', ':MarkdownPreviewFollow<CR>', { noremap = true, silent = true })
+
+-- Optional: Key binding to toggle Markdown preview
+vim.api.nvim_set_keymap('n', '<leader>mt', ':call ToggleMarkdownPreview()<CR>', { noremap = true, silent = true })
+
+-- Define function to toggle Markdown preview
+vim.cmd([[
+function! ToggleMarkdownPreview()
+  if exists('g:mkdp_is_ready') && g:mkdp_is_ready
+    if exists('g:mkdp_auto_start') && g:mkdp_auto_start == 1
+      call markdown#preview#stop()
+    else
+      call markdown#preview#start()
+    endif
+  else
+    call markdown#preview#start()
+  endif
+endfunction
+]])
+
+
