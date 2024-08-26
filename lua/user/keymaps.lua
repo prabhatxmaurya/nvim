@@ -70,31 +70,13 @@ map("n", "ts", ":TestSuite<CR>", default_opts)
 map("n", "tl", ":TestLast<CR>", default_opts)
 map("n", "tv", ":TestVisit<CR>", default_opts)
 
-map("n", "ca", ":lua vim.lsp.buf.code_action()<CR>", default_opts)
+-- code_action
+map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", default_opts)
 
 -- Toggle terminal
 map("n", "<leader>t", ":lua ToggleTerm()<CR>", default_opts)
-
-function ToggleTerm()
-	-- Check if there's a terminal buffer already open
-	local term_buf = vim.fn.bufnr("term://*")
-
-	if term_buf == -1 then
-		-- If not, open a new terminal
-		vim.cmd("belowright split | terminal")
-	else
-		-- If yes, check if it's visible in any window
-		local term_win = vim.fn.bufwinnr(term_buf)
-
-		if term_win == -1 then
-			-- If not, open it below in a split
-			vim.cmd("belowright split | buffer " .. term_buf)
-		else
-			-- If yes, close the terminal window
-			vim.cmd(term_win .. "close")
-		end
-	end
-end
+-- Close terminal with <leader>t while in terminal mode
+map("t", "<leader>t", "<C-\\><C-n>:lua ToggleTerm()<CR>", { noremap = true, silent = true })
 
 -- Key bindings for Markdown preview
 map("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
@@ -102,22 +84,7 @@ map("n", "<leader>ms", ":MarkdownPreviewStop<CR>", { noremap = true, silent = tr
 map("n", "<leader>mf", ":MarkdownPreviewFollow<CR>", { noremap = true, silent = true })
 
 -- Optional: Key binding to toggle Markdown preview
-vim.api.nvim_set_keymap("n", "<leader>mt", ":call ToggleMarkdownPreview()<CR>", { noremap = true, silent = true })
-
--- Define function to toggle Markdown preview
-vim.cmd([[
-function! ToggleMarkdownPreview()
-  if exists('g:mkdp_is_ready') && g:mkdp_is_ready
-    if exists('g:mkdp_auto_start') && g:mkdp_auto_start == 1
-      call markdown#preview#stop()
-    else
-      call markdown#preview#start()
-    endif
-  else
-    call markdown#preview#start()
-  endif
-endfunction
-]])
+map("n", "<leader>mt", ":call ToggleMarkdownPreview()<CR>", { noremap = true, silent = true })
 
 -- java format key binding
 map("n", "<leader>jf", ":lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })

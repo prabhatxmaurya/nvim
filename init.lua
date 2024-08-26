@@ -10,6 +10,8 @@ require("user.lsp")
 require("user.java")
 require("user.treesitter")
 require("user.null-ls") -- Load null-ls configuration
+require("user.terminal")
+require("user.markdown")
 
 -- Initialize packer.nvim
 vim.cmd([[packadd packer.nvim]])
