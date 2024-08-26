@@ -14,10 +14,10 @@ opt.smartindent = true
 opt.swapfile = false
 
 -- Enable mouse support
-opt.mouse = 'a'
+opt.mouse = "a"
 
 -- Enable clipboard access
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 
 -- Case insensitive searching unless /C or capital in search
 opt.ignorecase = true
@@ -25,12 +25,12 @@ opt.smartcase = true
 
 -- Appearance
 opt.termguicolors = true
-opt.background = 'dark'
+opt.background = "dark"
 
 opt.scrolloff = 5 -- Set scrolloff to keep the line you're editing centered
 
 -- Set scrolloff to keep the line you're editing centered
-opt.scrolloff = 999  -- Adjust the value as needed
+opt.scrolloff = 999 -- Adjust the value as needed
 
+opt.clipboard = "unnamedplus"
 -- Add more options as needed
-

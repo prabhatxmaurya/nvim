@@ -1,19 +1,18 @@
 -- Load user configuration files
-require('user.options')
-require('user.keymaps')
-require('user.cmp')
-require('user.java')
-require('user.autopairs')
-require('user.telescope')
-require('user.gruvbox')
-require('user.lsp')
-require('user.java')
-require('user.treesitter')
-
-
+require("user.options")
+require("user.keymaps")
+require("user.cmp")
+require("user.java")
+require("user.autopairs")
+require("user.telescope")
+require("user.gruvbox")
+require("user.lsp")
+require("user.java")
+require("user.treesitter")
+require("user.null-ls") -- Load null-ls configuration
 
 -- Initialize packer.nvim
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
 -- Configuration for markdown-preview.nvim
 vim.cmd([[
@@ -21,64 +20,68 @@ vim.cmd([[
   let g:mkdp_auto_close = 1
 ]])
 
+-- Enable formatting on save
 
-return require('packer').startup(function(use)
-    -- Let packer manage itself
-    use 'wbthomason/packer.nvim'
+vim.cmd([[
+  autocmd BufWritePre *.java lua vim.lsp.buf.format()
+]])
 
-    -- Completion framework
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'L3MON4D3/LuaSnip'
+return require("packer").startup(function(use)
+	-- Let packer manage itself
+	use("wbthomason/packer.nvim")
 
-    -- Load test plugin configuration
-    require('user.test')(use)
+	-- Completion framework
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-nvim-lua")
+	use("saadparwaiz1/cmp_luasnip")
+	use("L3MON4D3/LuaSnip")
 
-    -- NERDTree plugin
-    use 'preservim/nerdtree'
+	-- Load test plugin configuration
+	require("user.test")(use)
 
-    -- Treesitter
-    use 'nvim-treesitter/nvim-treesitter'
+	-- NERDTree plugin
+	use("preservim/nerdtree")
 
-    -- Auto pairs
-    use 'windwp/nvim-autopairs'
+	-- Plugin for integrating formatters/linters
+	use("jose-elias-alvarez/null-ls.nvim")
 
-    -- LSP Configuration
-    use 'neovim/nvim-lspconfig'
+	-- Treesitter
+	use("nvim-treesitter/nvim-treesitter")
 
-    -- Java Language Server support
-     use 'mfussenegger/nvim-jdtls' 
+	-- Auto pairs
+	use("windwp/nvim-autopairs")
 
-     -- Markdown Preview (optional)
-      use { 'iamcco/markdown-preview.nvim', run = 'cd app && npm install' }
+	-- LSP Configuration
+	use("neovim/nvim-lspconfig")
 
-        use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    -- or                            , branch = '0.1.x',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
+	-- Java Language Server support
+	use("mfussenegger/nvim-jdtls")
 
-        -- Telescope FZF native
-    use {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
-    }
+	-- Markdown Preview (optional)
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
 
-    use { "ellisonleao/gruvbox.nvim" }
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		-- or                            , branch = '0.1.x',
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-      use {
-    'williamboman/mason.nvim',
-    config = function()
-      require('mason').setup()
-    end
-  }
+	-- Telescope FZF native
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+	})
 
-end
-)
+	use({ "ellisonleao/gruvbox.nvim" })
 
-
-
+	use({
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	})
+end)
