@@ -12,21 +12,7 @@ require("user.treesitter")
 require("user.null-ls") -- Load null-ls configuration
 require("user.terminal")
 require("user.markdown")
-
--- Initialize packer.nvim
-vim.cmd([[packadd packer.nvim]])
-
--- Configuration for markdown-preview.nvim
-vim.cmd([[
-  let g:mkdp_auto_start = 1
-  let g:mkdp_auto_close = 1
-]])
-
--- Enable formatting on save
-
-vim.cmd([[
-  autocmd BufWritePre *.java lua vim.lsp.buf.format()
-]])
+require("user.autocmds")
 
 return require("packer").startup(function(use)
 	-- Let packer manage itself
