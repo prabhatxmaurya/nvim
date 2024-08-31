@@ -1,5 +1,6 @@
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
+local search_replace = require("user.search_replace")
 
 -- Leader key
 vim.g.mapleader = " " -- Set Space as leader key
@@ -54,6 +55,9 @@ map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", default_opts) -- Live gre
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", default_opts) -- List buffers
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", default_opts) -- Help tags
 
+-- Keymap to invoke the LSP rename function
+map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+
 -- Keymap for organizing imports
 -- map("n", "<leader>oi", '<cmd>lua vim.lsp.buf.execute_command({ command = "java.organizeImports" })<CR>', default_opts)
 map("n", "<leader>oi", "<cmd>lua vim.lsp.buf.code_action()<CR>", default_opts)
@@ -87,5 +91,8 @@ map("n", "<leader>mf", ":MarkdownPreviewFollow<CR>", { noremap = true, silent = 
 -- Optional: Key binding to toggle Markdown preview
 map("n", "<leader>mt", ":call ToggleMarkdownPreview()<CR>", { noremap = true, silent = true })
 
--- java format key binding
-map("n", "<leader>jf", ":lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })
+-- java at key binding
+map("n", "<leader>jf", ":lua vim.lsp.buf.at()<CR>", { noremap = true, silent = true })
+
+-- search and replace function
+map("n", "<leader>sr", ':lua require("user.search_replace").search_replace()<CR>', { noremap = true, silent = true })
