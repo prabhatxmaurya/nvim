@@ -13,6 +13,8 @@ require("user.null-ls") -- Load null-ls configuration
 require("user.terminal")
 require("user.markdown")
 require("user.autocmds")
+require("user.files_utils")
+require("user.commands")
 
 return require("packer").startup(function(use)
 	-- Let packer manage itself

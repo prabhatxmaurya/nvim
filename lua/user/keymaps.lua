@@ -96,3 +96,14 @@ map("n", "<leader>jf", ":lua vim.lsp.buf.at()<CR>", { noremap = true, silent = t
 
 -- search and replace function
 map("n", "<leader>sr", ':lua require("user.search_replace").search_replace()<CR>', { noremap = true, silent = true })
+
+-- Key mapping to trigger LSP rename
+vim.api.nvim_set_keymap("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+
+-- In init.lua or lua/user/keymaps.lua
+vim.api.nvim_set_keymap(
+	"n",
+	"<Leader>cf",
+	":lua require('user.files_utils').create_file('NewFile.java')<CR>",
+	{ noremap = true, silent = true }
+)

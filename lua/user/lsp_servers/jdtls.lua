@@ -40,6 +40,7 @@ lspconfig.jdtls.setup({
 					enabled = true,
 				},
 				settings = {
+					-- Customize import order
 					importOrder = {
 						"java",
 						"javax",
