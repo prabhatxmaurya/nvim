@@ -6,7 +6,7 @@ vim.g.mkdp_auto_close = 1
 
 -- Enable formatting on save for multiple file types
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.java", "*.py", "*.js", "*.ts" },
+	pattern = { "*.java", "*.py", "*.js", "*.ts", '*.jsx', '*.tsx' },
 	callback = function()
 		vim.lsp.buf.format()
 	end,

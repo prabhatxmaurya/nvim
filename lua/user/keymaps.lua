@@ -14,6 +14,9 @@ map("n", "<leader>q", ":q<CR>", default_opts)
 -- Close current buffer
 map("n", "<leader>c", ":bd<CR>", default_opts)
 
+-- save all buffers and close all but this one
+map("n", "<leader>bc", ":%bufdo w|%bd|e#<CR>", default_opts)
+
 -- Toggle NERDTree
 map("n", "<leader>n", ":NERDTreeToggle<CR>", default_opts)
 
@@ -58,10 +61,6 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", default_opts) -- Help tag
 -- Keymap to invoke the LSP rename function
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 
--- Keymap for organizing imports
--- map("n", "<leader>oi", '<cmd>lua vim.lsp.buf.execute_command({ command = "java.organizeImports" })<CR>', default_opts)
-map("n", "<leader>oi", "<cmd>lua vim.lsp.buf.code_action()<CR>", default_opts)
-
 -- Go to definition
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", default_opts)
 
@@ -76,7 +75,7 @@ map("n", "tl", ":TestLast<CR>", default_opts)
 map("n", "tv", ":TestVisit<CR>", default_opts)
 
 -- code_action
-map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", default_opts)
+map("n", "<leader>a", ":lua vim.lsp.buf.code_action()<CR>", default_opts)
 
 -- Toggle terminal
 map("n", "<leader>t", ":lua ToggleTerm()<CR>", default_opts)
@@ -107,3 +106,5 @@ vim.api.nvim_set_keymap(
 	":lua require('user.files_utils').create_file('NewFile.java')<CR>",
 	{ noremap = true, silent = true }
 )
+
+map("n", "<leader>d", ":lua vim.lsp.buf.hover()<CR>", { silent = true })

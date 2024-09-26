@@ -38,6 +38,9 @@ return require("packer").startup(function(use)
 	-- Plugin for integrating formatters/linters
 	use("jose-elias-alvarez/null-ls.nvim")
 
+	-- TS Server
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+
 	-- Treesitter
 	use("nvim-treesitter/nvim-treesitter")
 
