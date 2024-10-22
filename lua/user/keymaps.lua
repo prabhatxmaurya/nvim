@@ -67,6 +67,9 @@ map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", default_opts)
 -- Go back to previous location
 map("n", "cb", "<C-o>", default_opts) -- Map <leader>cb to go back
 
+-- move forwaed to the location from which go back is triggered
+map("n", "cf", "<C-i>", default_opts)
+
 --test keybindings
 map("n", "tn", ":TestNearest<CR>", default_opts)
 map("n", "tf", ":TestFile<CR>", default_opts)

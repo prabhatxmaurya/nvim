@@ -2,7 +2,7 @@ local opt = vim.opt
 
 -- Line numbers
 opt.number = true
---opt.relativenumber = true
+opt.relativenumber = true
 
 -- Tabs and indentation
 opt.expandtab = true

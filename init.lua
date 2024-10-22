@@ -77,4 +77,20 @@ return require("packer").startup(function(use)
 			require("mason").setup()
 		end,
 	})
+
+	-- Mason LSPConfig for integrating Mason with nvim-lspconfig
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"pyright",
+					"ts_ls",
+					"jdtls",
+					"marksman",
+					"kotlin_language_server",
+				},
+			})
+		end,
+	})
 end)
