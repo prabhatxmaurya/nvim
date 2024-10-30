@@ -1,18 +1,17 @@
-
 -- ~/.config/nvim/lua/user/comment.lua
-local status_ok, comment = pcall(require, 'Comment')
+local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
-    vim.notify('Comment.nvim not found!')
-    return
+	vim.notify("Comment.nvim not found!")
+	return
 end
 
-require('Comment').setup {
-    toggler = {
-        line = '<C-/>',   -- Mapping for toggling comments
-        block = '<C-S-/>', -- Mapping for block comments
-    },
-    opleader = {
-        line = '<C-/>',   -- Mapping for operator-pending comments
-        block = '<C-S-/>', -- Mapping for block comments in operator-pending mode
-    },
-}
+require("Comment").setup({
+	toggler = {
+		line = "<leader>k", -- Mapping for toggling comments
+		block = "<leader>b", -- Mapping for block comments
+	},
+	opleader = {
+		line = "<leader>k", -- Mapping for operator-pending comments
+		block = "<leader>b", -- Mapping for block comments in operator-pending mode
+	},
+})
