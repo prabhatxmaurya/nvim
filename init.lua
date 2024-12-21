@@ -15,6 +15,7 @@
  require("user.autocmds")
  require("user.files_utils")
  require("user.commands")
+require("user.comment")
 
  return require("packer").startup(function(use)
 	-- Let packer manage itself
