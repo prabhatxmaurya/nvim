@@ -1,4 +1,4 @@
- -- Load user configuration files
+--  -- Load user configuration files
  require("user.options")
  require("user.keymaps")
  require("user.cmp")
@@ -15,7 +15,6 @@
  require("user.autocmds")
  require("user.files_utils")
  require("user.commands")
- require("user.comment")
 
  return require("packer").startup(function(use)
 	-- Let packer manage itself
@@ -64,7 +63,7 @@
  		requires = { { "nvim-lua/plenary.nvim" } },
  	})
 
-    --  Comment 
+    --  Comment
     use 'numToStr/Comment.nvim'
 
 

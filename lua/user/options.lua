@@ -14,7 +14,7 @@ opt.smartindent = true
 opt.swapfile = false
 
 -- Enable mouse support
-opt.mouse = "a"
+opt.mouse = "" -- put "a" to enable in all mode or "n" to enable on normal mode
 
 -- Enable clipboard access
 opt.clipboard = "unnamedplus"
@@ -26,11 +26,6 @@ opt.smartcase = true
 -- Appearance
 opt.termguicolors = true
 opt.background = "dark"
-
-opt.scrolloff = 5 -- Set scrolloff to keep the line you're editing centered
-
--- Set scrolloff to keep the line you're editing centered
-opt.scrolloff = 999 -- Adjust the value as needed
 
 -- creates backup files
 opt.backup = false
